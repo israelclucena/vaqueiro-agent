@@ -9,6 +9,7 @@ Tool source is switchable:
 import os
 
 from google.adk.agents import Agent
+from google.genai import types
 
 INSTRUCTION = """
 You are Vaqueiro, a developer assistant for ONE software project. You know the
@@ -49,7 +50,8 @@ else:
 root_agent = Agent(
     name="vaqueiro",
     # Free via Google AI Studio. Swap to gemini-2.5-flash / gemini-3.0-pro-preview if you prefer.
-    model="gemini-flash-latest",
+    model="gemini-2.5-flash",
+    generate_content_config=types.GenerateContentConfig(temperature=0),
     description=("Answers questions about a project using its curated "
                  ".ai-context/ instead of rescanning the codebase."),
     instruction=INSTRUCTION,

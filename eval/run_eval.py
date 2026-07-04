@@ -36,7 +36,14 @@ async def run_case(runner, session_service, case, i):
             final = "".join(p.text or "" for p in event.content.parts)
 
     tool_ok = (case.get("expect_tool") in tools_called) if case.get("expect_tool") else True
-    text_ok = all(s.lower() in final.lower() for s in case.get("expect_contains", []))
+    if "expect_contains_any" in case:
+        # list of groups; a group passes if ANY of its items appears; all groups must pass
+        text_ok = all(
+            any(s.lower() in final.lower() for s in group)
+            for group in case["expect_contains_any"]
+        )
+    else:
+        text_ok = all(s.lower() in final.lower() for s in case.get("expect_contains", []))
     return (tool_ok and text_ok), tools_called, final
 
 

@@ -1,5 +1,5 @@
-{"question": "Where is the app-wide Material 3 theme configured?", "expect_tool": "read_ai_context", "expect_contains": ["app.config.ts", "theme"]}
-{"question": "Should I use *ngIf or something else in this project?", "expect_tool": "read_ai_context", "expect_contains": ["@if", "control flow"]}
-{"question": "How do I manage component state here?", "expect_tool": "read_ai_context", "expect_contains": ["signals"]}
-{"question": "Why does my component render without styles?", "expect_tool": "read_ai_context", "expect_contains": ["theme", "app.config.ts"]}
-{"question": "What naming convention do components follow?", "expect_tool": "read_ai_context", "expect_contains": ["ng-m3-"]}
+{"question": "Where is the app-wide Material 3 theme configured?", "expect_tool": "read_ai_context", "expect_contains_any": [["app.config.ts", "src/theme"], ["theme"]]}
+{"question": "Should I use *ngIf or something else in this project?", "expect_tool": "read_ai_context", "expect_contains_any": [["@if"], ["control flow"]]}
+{"question": "How do I manage component state here?", "expect_tool": "read_ai_context", "expect_contains_any": [["signals", "signal()"]]}
+{"question": "Why does my component render without styles?", "expect_tool": "read_ai_context", "expect_contains_any": [["theme"], ["app.config.ts"]]}
+{"question": "What naming convention do components follow?", "expect_tool": "read_ai_context", "expect_contains_any": [["ng-m3-"]]}

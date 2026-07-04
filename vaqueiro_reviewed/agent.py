@@ -14,6 +14,7 @@ import sys
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from google.adk.agents import Agent, SequentialAgent
+from google.genai import types
 
 from vaqueiro.agent import INSTRUCTION as VAQUEIRO_INSTRUCTION
 from vaqueiro.tools import (
@@ -24,7 +25,8 @@ from vaqueiro.tools import (
 # --- 1) Answerer: same brain/tools as Vaqueiro, stores its answer in state --- #
 answerer = Agent(
     name="vaqueiro_answerer",
-    model="gemini-flash-latest",
+    model="gemini-2.5-flash",
+    generate_content_config=types.GenerateContentConfig(temperature=0),
     description="Answers project questions grounded in .ai-context/.",
     instruction=VAQUEIRO_INSTRUCTION,
     tools=[list_ai_context, read_ai_context, read_file,
@@ -67,7 +69,8 @@ FIX: one short instruction telling the answerer how to improve (or "none")
 
 evaluator = Agent(
     name="vaqueiro_evaluator",
-    model="gemini-flash-latest",
+    model="gemini-2.5-flash",
+    generate_content_config=types.GenerateContentConfig(temperature=0),
     description="Skeptical judge that grades the answer against explicit criteria.",
     instruction=EVALUATOR_INSTRUCTION,
     tools=[list_ai_context, read_ai_context, read_file, search_codebase],
