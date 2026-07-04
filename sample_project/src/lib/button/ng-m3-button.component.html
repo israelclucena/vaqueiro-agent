@@ -1,0 +1,11 @@
+<button
+  type="button"
+  class="ng-m3-button"
+  [class.ng-m3-button--filled]="variant() === 'filled'"
+  [class.ng-m3-button--outlined]="variant() === 'outlined'"
+  [class.ng-m3-button--text]="variant() === 'text'"
+  [disabled]="disabled()"
+  (click)="onClick()"
+>
+  <ng-content />
+</button>

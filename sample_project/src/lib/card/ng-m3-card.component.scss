@@ -1,0 +1,13 @@
+.ng-m3-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ng-m3-gap);
+  padding: 16px;
+  border-radius: var(--ng-m3-radius);
+  background: var(--mat-sys-surface-container);
+  color: var(--mat-sys-on-surface);
+
+  &--elevated {
+    box-shadow: var(--mat-sys-level2);
+  }
+}

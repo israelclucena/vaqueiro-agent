@@ -1,0 +1,18 @@
+@use '@angular/material' as mat;
+
+// Material Design 3 tokens. Components must consume these CSS custom properties
+// and never hard-code color values (that would break dark mode).
+html {
+  @include mat.theme((
+    color: (primary: mat.$violet-palette, tertiary: mat.$orange-palette),
+    typography: Roboto,
+    density: 0,
+  ));
+
+  --ng-m3-radius: 12px;
+  --ng-m3-gap: 8px;
+}
+
+:root {
+  color-scheme: light dark;
+}
