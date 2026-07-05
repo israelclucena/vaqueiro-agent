@@ -18,6 +18,10 @@ from vaqueiro.agent import root_agent          # noqa: E402
 from google.adk.runners import Runner           # noqa: E402
 from google.adk.sessions import InMemorySessionService  # noqa: E402
 from google.genai import types                  # noqa: E402
+from dotenv import load_dotenv
+
+load_dotenv(Path(__file__).resolve().parents[1] / "vaqueiro" / ".env")
+
 
 CASES = Path(__file__).resolve().parent / "eval_cases.jsonl"
 APP = "vaqueiro-eval"
